@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自我介绍</title>
+</head>
+
+<body>
+    <table border="1">
+        <tr>
+            <td>姓名</td>
+            <td>闫语赞</td>
+        </tr>
+        <tr>
+            <td>当前身份</td>
+            <td>大一学生</td>
+        </tr>
+        <tr>
+            <td>就读院校</td>
+            <td>宁波工程学院</td>
+        </tr>
+    </table>
+</body>
+
+</html>
