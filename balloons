@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flying Balloons</title>
+    <style>
+        .balloon {
+            position: absolute;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="balloons"></div>
+    <script>
+        const balloonContainer = document.getElementById('balloons');
+        const numBalloons = 10;
+
+        for (let i = 0; i < numBalloons; i++) {
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            balloon.style.width = getRandomSize() + 'px';
+            balloon.style.height = balloon.style.width;
+            balloon.style.left = Math.random() * window.innerWidth + 'px';
+            balloon.style.top = window.innerHeight + 'px';
+            balloon.style.backgroundColor = getRandomColor();
+            balloonContainer.appendChild(balloon);
+
+            animateBalloon(balloon);
+        }
+
+        function getRandomSize() {
+            return Math.floor(Math.random() * 50) + 30;
+        }
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function animateBalloon(balloon) {
+            let y = parseInt(balloon.style.top);
+            const interval = setInterval(() => {
+                y -= 1;
+                balloon.style.top = y + 'px';
+
+                // 改变大小
+                const newSize = getRandomSize();
+                balloon.style.width = newSize + 'px';
+                balloon.style.height = newSize + 'px';
+
+                // 改变颜色
+                balloon.style.backgroundColor = getRandomColor();
+
+                if (y < -parseInt(balloon.style.width)) {
+                    clearInterval(interval);
+                    balloonContainer.removeChild(balloon);
+                }
+            }, 20);
+        }
+    </script>
+</body>
+
+</html>
